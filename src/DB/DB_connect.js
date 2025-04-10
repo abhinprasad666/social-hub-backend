@@ -5,7 +5,7 @@ import { connect } from "mongoose"
 
 const dbConnected=async()=>{
     try {
-        connect(process.env.DB_LOCAL_URL)
+       await connect(process.env.DB_LOCAL_URL)
         console.log("<<< DB Connected >>>")
     } catch (error) {
         
@@ -14,4 +14,4 @@ const dbConnected=async()=>{
     }
 }
 
-export default dbConnected
+export default dbConnected 

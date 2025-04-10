@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/auth",authRoute);
 
-app.listen(PORT, () =>{ console.log("Server running on port " + PORT)
-    dbConnected()
+app.listen(PORT, () =>{
+     console.log("Server running on port " + PORT)
+     //db connecting
+       dbConnected()
 });
