@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv";
 import authRoute from "./routes/authRoute.js";
+import dbConnected from "./DB/DB_connect.js";
 
 
 
@@ -17,4 +18,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/auth",authRoute);
 
-app.listen(PORT, () => console.log("Server running on port " + PORT));
+app.listen(PORT, () =>{ console.log("Server running on port " + PORT)
+    dbConnected()
+});
