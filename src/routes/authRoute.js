@@ -6,7 +6,7 @@ const router=express.Router()
 
 //singUp
 
-router.get("/singup",singupController)
+router.post("/singup",singupController)
 //
 // router.get("/login")
 //
