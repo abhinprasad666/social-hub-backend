@@ -1,5 +1,6 @@
 import express from "express"
 import { loginController, logoutController, meController, singupController } from "../controllers/authController.js"
+import { proctectRoute } from "../../middleware/proctectRouter.js"
 
 const router=express.Router()
 
@@ -12,7 +13,7 @@ router.post('/login',loginController)
 // router.get("/logout")
 router.post('/logout',logoutController)
 // router.get("/me")
-router.post('/me',meController)
+router.get('/me',proctectRoute,meController)
 
 
 export default router

@@ -128,6 +128,18 @@ export const logoutController=async (req,res)=>{
 
 // Controller
 export const meController=async (req,res)=>{
+    try {
+        const existUser= await User.findOne({_id:req.existUser._id}).select("-password")
+        res.status(200).json({
+            success:true,
+            message:"You are admin",
+            existUser
+        })
+        
+    } catch (error) {
+        console.error(`error me controller:${error.message}`)
+        res.status(500).json({error:"Internal Server Error"})
+    }
 
 }
 
