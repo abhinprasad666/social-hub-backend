@@ -1,5 +1,5 @@
 import express from "express"
-import { singupController } from "../controllers/authController.js"
+import { loginController, singupController } from "../controllers/authController.js"
 
 const router=express.Router()
 
@@ -9,6 +9,7 @@ const router=express.Router()
 router.post("/singup",singupController)
 //
 // router.get("/login")
+router.post('/login',loginController)
 //
 // router.get("/logout")
 //
