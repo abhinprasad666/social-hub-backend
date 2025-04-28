@@ -113,10 +113,21 @@ export const loginController=async (req,res)=>{
 //logout Controller
 export const logoutController=async (req,res)=>{
 
+    try {
+        res.cookie('jwt', "",{maxAge:0});
+        res.status(200).json({
+         success:true,
+         message:"Logout Successfullly"
+        })
+    } catch (error) {
+        console.error(`error in logout controller:${error.message}`)
+        res.status(500).json({error:"Internal Server Error"})
+    }
+ 
 }
 
 // Controller
-export const Controller=async (req,res)=>{
+export const meController=async (req,res)=>{
 
 }
 
