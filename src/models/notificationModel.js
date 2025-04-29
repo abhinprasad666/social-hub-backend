@@ -17,7 +17,7 @@ const notificationSchema=Schema({
     type:{
         type:String,
         require:true,
-        enum:[follow,like,comment,viewProfile]
+        enum:["follow","like","comment","viewProfile"]
     },
     read:{
         type:String,

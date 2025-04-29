@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/userModel.js";
+import Notification from "../models/notificationModel.js";
 
 //get single user Profile
 export const getSingleUserProfile = async (req, res) => {
@@ -53,6 +54,7 @@ export const followAndUnfollow = async (req, res) => {
                 error: "You can not Follow and Unfollow",
             });
         }
+        const isFollowing=currentUser.following.includes(id)
 
         if (isFollowing) {
             //unFollow
@@ -70,6 +72,14 @@ export const followAndUnfollow = async (req, res) => {
             await User.findByIdAndUpdate({ _id: currentUser._id }, { $push: { following: anotherUser._id } });
 
             //send notification
+            const newNotification=new Notification({
+                from:currentUser._id,
+                to:anotherUser._id,
+                type:"follow"
+              
+            })
+            await newNotification.save()
+
             return res.status(201).json({
                 success: true,
                 message: "Follow successfully",
