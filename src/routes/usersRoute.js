@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { followAndUnfollow, getSingleUserProfile } from "../controllers/usersController.js";
+import { followAndUnfollow, getSingleUserProfile, getSuggestedUsers } from "../controllers/usersController.js";
 import { proctectRoute } from "../../middleware/proctectRouter.js";
 
 const router=Router()
@@ -9,7 +9,8 @@ const router=Router()
 router.get('/profile/:username',getSingleUserProfile)
 // follow and unfollow
 router.post('/follow/unfollow/:id',proctectRoute,followAndUnfollow)
-
+//get suggested users
+router.get('/suggested',proctectRoute,getSuggestedUsers)
 
 
 
